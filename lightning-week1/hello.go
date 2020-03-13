@@ -16,6 +16,7 @@ func add(x, y int) int {
 }
 
 func main() {
+  defer fmt.Println("Goodbye, cruel world.👋")
   rand.Seed(time.Now().UTC().UnixNano())
   fmt.Println("Hello, cruel world.👋")
   fmt.Printf("My favourite number is %d\n", rand.Intn(5876))
@@ -35,6 +36,11 @@ func main() {
   }
 
   fmt.Println()
+  for j := getRand(); j > 1; j = getRand() {
+    fmt.Printf("Whiling %d\n", j)
+  }
 
-  fmt.Println("Goodbye, cruel world.👋")
+  fmt.Println()
+
+
 }
