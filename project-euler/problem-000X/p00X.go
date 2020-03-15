@@ -10,5 +10,6 @@ func main() {
   fmt.Println("Problem ")
 
 
-  fmt.Println(time.Now().Sub(startTime))
+
+  fmt.Printf("Took: %d",time.Now().Sub(startTime))
 }
