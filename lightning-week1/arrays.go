@@ -14,7 +14,7 @@ func main() {
 
   primes = primes[0:6]
   fmt.Println(primes)
-
+  
   var s []int = primes [1:4]
   fmt.Println(s)
 
