@@ -6,10 +6,11 @@ import (
 )
 
 func main() {
+  var result int
   startTime := time.Now()
   fmt.Println("Problem ")
 
+  fmt.Printf("Answer: %d\n",result)
 
-
-  fmt.Printf("Took: %d",time.Now().Sub(startTime))
+  fmt.Printf("Took: %v",time.Now().Sub(startTime))
 }
