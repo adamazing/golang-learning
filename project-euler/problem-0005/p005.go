@@ -34,7 +34,7 @@ func smallestPositiveNumberDivisibleByNumbersLessThan(n int) int {
 		valsUnderLimit[i] = i + 1
 	}
 
-	for j := n; j <= maxPossibleResult(valsUnderLimit); j++ {
+	for j := n; j <= maxPossibleResult(valsUnderLimit); j += n {
 		if isDivisibleByAll(j, valsUnderLimit) {
 			return j
 		}
