@@ -49,10 +49,10 @@ func sumSquareDiff(n int) int {
 func main() {
 	var result int
 	startTime := time.Now()
-	fmt.Println("Problem ")
+	fmt.Println("Problem 6")
 
 	result = sumSquareDiff(100)
 
 	fmt.Printf("Answer: %d\n", result)
-	fmt.Printf("Took: %v", time.Now().Sub(startTime))
+	fmt.Printf("Took: %v\n", time.Now().Sub(startTime))
 }
