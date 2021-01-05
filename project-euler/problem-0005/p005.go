@@ -3,9 +3,8 @@ package main
 import (
 	"fmt"
 	"math"
+	"math/big"
 	"time"
-
-	"../lib/primesieve"
 )
 
 // 2520 is the smallest number that can be divided by each of the numbers from
@@ -13,6 +12,32 @@ import (
 //
 // What is the smallest positive number that is evenly divisible by all of the
 // numbers from 1 to 20?
+
+
+// Sieve function
+//   n            The upper limit.
+//   lowerLimit   The lower limit.
+func sieve(n, lowerLimit int) []int {
+	var prime = make([]bool, n+1)
+	var primes []int
+	// fill it with true values
+	for i := range prime {
+		prime[i] = true
+	}
+	for i := 2; float64(i) <= math.Sqrt(float64(n)); i++ {
+		if big.NewInt(int64(i)).ProbablyPrime(10) {
+			for j := i * i; j <= n; j += i {
+				prime[j] = false
+			}
+		}
+	}
+	for i, v := range prime {
+		if v && i > lowerLimit {
+			primes = append(primes, i)
+		}
+	}
+	return primes
+}
 
 func maxPossibleResult(divisors []int) int {
 	result := 1
@@ -48,11 +73,11 @@ func smallestPositiveNumberDivisibleByNumbersLessThan(n int) int {
 }
 
 func refinedSmallestPositiveNumberDivisibleByNumbersLessThan(n int) int {
-	sieve := primesieve.Sieve(n, 0)
+	sieveValues := sieve(n, 0)
 	result := 1
-	for i := 0; i < len(sieve); i++ {
-		var a float64 = math.Floor(float64(math.Log(float64(n)) / math.Log(float64(sieve[i]))))
-		result = result * (int(math.Pow(float64(sieve[i]), a)))
+	for i := 0; i < len(sieveValues); i++ {
+		var a float64 = math.Floor(float64(math.Log(float64(n)) / math.Log(float64(sieveValues[i]))))
+		result = result * (int(math.Pow(float64(sieveValues[i]), a)))
 	}
 	return result
 }
