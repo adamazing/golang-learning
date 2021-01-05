@@ -46,5 +46,5 @@ func main() {
 
 	fmt.Printf("Answer: %d\n", result)
 
-	fmt.Printf("Took: %v", time.Now().Sub(startTime))
+	fmt.Printf("Took: %v\n", time.Now().Sub(startTime))
 }
