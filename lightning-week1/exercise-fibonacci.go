@@ -1,22 +1,28 @@
 package main
 
 import "fmt"
+import "math/big"
 
 // fibonacci is a function that returns
-// a function that returns an int.
-func fibonacci() func() int {
-  a,b := 0, 1
-  return func() int {
+// a function that returns a big int.
+func fibonacci() func() big.Int {
+  a := big.NewInt(0)
+  b := big.NewInt(1)
+
+  return func() big.Int {
     defer func() {
-      a, b = b, a+b
+      var c big.Int
+      c.Add(a,b)
+      a, b = b, c
     }()
     return a
   }
 }
 
 func main() {
-	f := fibonacci()
-	for i := 0; i < 10; i++ {
+  var f func() big.Int
+	f = fibonacci()
+	for i := 0; i < 100; i++ {
 		fmt.Println(f())
 	}
 }

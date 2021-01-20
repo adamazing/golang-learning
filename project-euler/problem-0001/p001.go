@@ -13,7 +13,6 @@ import (
 func main() {
   startTime := time.Now()
   fmt.Println("Problem 1")
-
   total := 0
   for i:=1; i<1000; i++ {
     if i%3 == 0 {
@@ -24,5 +23,5 @@ func main() {
   }
   fmt.Printf("Total is %d\n", total)
 
-  fmt.Printf("Took: %d",time.Now().Sub(startTime))
+  fmt.Printf("Took: %v",time.Now().Sub(startTime))
 }
